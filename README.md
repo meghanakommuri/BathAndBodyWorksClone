@@ -32,17 +32,21 @@ We have used MongoDB as the database. We have created 4 collections: Account, Pr
 
 ACCOUNT COLLECTION:
 The user collection stores the user information when they register.
+
 ![image](https://user-images.githubusercontent.com/52080417/158381398-cdd45c99-27da-4ee5-a10b-56bc237bb947.png)
 
 PRODUCT COLLECTION:
 This collection stores the products information
+
 ![image](https://user-images.githubusercontent.com/52080417/158381503-77b3a582-4134-45e6-bd07-baaf7a1eb8fc.png)
 
 CART COLLECTION:
 This collection stores the items that user adds to their cart. It is specific to the user.
 When the user checkouts the items, those items are removed from his cart collection.
+
 ![image](https://user-images.githubusercontent.com/52080417/158381542-93210fad-77f2-4b73-bd3d-cf573dbeceb2.png)
 
 ORDER COLLECTION:
 This collection stores the order items after the user checkouts. It maintains the order history for a user. 
+
 ![image](https://user-images.githubusercontent.com/52080417/158381582-ebf38e57-d510-40a9-8126-5892a035aed8.png)
