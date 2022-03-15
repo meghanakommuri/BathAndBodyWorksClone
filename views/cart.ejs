@@ -1,0 +1,60 @@
+<%- include ('partials/header') %>
+
+<div class="container"><br/>
+        <table class="table table-fluid">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+            <% results.forEach(function(product){ %>
+                <tr>
+                    <td>
+                        <div>
+                            <img src="images/<%= product.img %>" style="width:200px; height:200px;" class="img-thumbnail"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <div class="caption"><a href="products/<%= product._id %>"><%= product.name %></a></div>
+                            <div>
+                                <small class="font-italic"><%= product.type %></small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="font-weight-bold">$ <%= product.price %></p>
+                    </td>
+                    <td>
+                        <select name="quantity" id="quantity">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </td>
+                    <td>
+                        <form action="/cart/<%= product._id %>/delete?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-danger">Remove from Cart</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+            </table>
+            <form action="/checkout/<%= user.username %>" method="GET">
+                <button type="submit" class="btn btn-warning">Proceed to Checkout</button>
+            </form>
+            <p><a href="/products">Back to All Products</a></p>
+</div><br/>
+
+<%- include ('partials/footer') %>

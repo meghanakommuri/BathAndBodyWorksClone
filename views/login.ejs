@@ -1,0 +1,27 @@
+<%- include ('partials/header') %>
+
+<div class="container"><br/>
+  <h1> Welcome to BB Eternity. Sign In to enjoy different fragrances. </h1>
+
+  <form action="/login" method="POST">
+
+  <div class="form-group row mb-3">
+  	<input type="text" name="username" class="form-control" placeholder="Email">
+  </div>
+   <div class="form-group row mb-3">
+  	<input type="password" name="password" class="form-control" placeholder="Password">
+  </div>
+
+  <div class="form-group row mb-3">
+  	<button type="submit" class="btn btn-info">Login</button>
+    <a href="/">Cancel</a>
+  </div>
+  <div class="form-group row mb-3">
+  	<p>Not registered?<a href="/register">Create an account</a></p>
+  </div>
+
+  </form>
+
+</div><br/>
+
+<%- include ('partials/footer') %>

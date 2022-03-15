@@ -1,0 +1,30 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+    <h3> Product Details </h3>
+    
+    <p><img src="/images/<%= product.img %>" style="width:300px; height:300px;"/></p>
+    <p><%= product.name %> (<%= product.volume %>) <br/> <small><%= product.type %></small></p>
+    <p class="text-success">Stock Available: <%= product.stock %></p>
+    <p style="font-weight: bold;">$ <%= product.price %></p>
+    <p>About the product: <%= product.desc %></p>
+
+    <% if (user.username == "admin@gmail.com") { %>
+        <a class="btn btn-warning" href="/admin/product/<%= product._id %>/edit" role="button">Edit product</a>
+            
+        <form action="/admin/product/<%= product._id %>/delete?_method=DELETE" method="POST">
+            <br/><button type="submit" class="btn btn-danger"> Delete product</button>
+        </form>
+
+        <form action="/admin/new" method="GET">
+            <br/><button type="submit" class="btn btn-info"> Add new product</button>
+        </form>
+    <% } else { %>
+        <form action="/cart/<%= product._id %>" method="POST">
+            <button type="submit" class="btn btn-secondary">Add to cart</button>
+        </form>
+    <% } %>
+
+    <p><a href="/products">Back to All Products</a></p>
+</div>
+<%- include ('partials/footer') %>

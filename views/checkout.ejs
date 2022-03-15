@@ -1,0 +1,11 @@
+<%- include ('partials/header') %>
+
+    <div class="container"><br/>
+        <form action="/payment/<%= user.username %>" method="POST">
+            <div class="form-group row mb-3">
+                <input type="text" name="address" class="form-control" placeholder="Delivery Address">
+            </div>
+            <button type="submit" class="btn btn-secondary">Confirm Payment</button>
+        </form>
+    </div></br>
+<%- include ('partials/footer') %>

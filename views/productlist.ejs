@@ -1,0 +1,52 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+    <br/>
+    <table class="table table-fluid" id="myTable">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Cart</th>
+            </tr>
+        </thead>
+    <% results.forEach(function(product){ %>
+        <tr>
+            <td>
+                <div>
+                    <img src="images/<%= product.img %>" style="width:200px; height:200px;" class="img-thumbnail"/>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <div class="caption"><a href="products/<%= product._id %>"><%= product.name %></a></div>
+                    <div>
+                        <small class="font-italic"><%= product.type %></small>
+                        <p class="text-success">Stock Available: <%= product.stock %></p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p class="font-weight-bold">$ <%= product.price %></p>
+            </td>
+            <td>
+                <form action="/cart/<%= product._id %>" method="POST">
+                    <button type="submit" class="btn btn-secondary">Add to cart</button>
+                </form>
+            </td>
+        </tr>
+    <% }); %>
+    </table>
+    <br/>
+</div>
+
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable({
+            'lengthMenu' : [4,8,10,15]
+        });
+    } );
+</script>
+
+<%- include ('partials/footer') %>

@@ -1,0 +1,53 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h3>Profile</h3>
+            <p>Name: <%= user.name %></p>
+            <p>Email: <%= user.username %></p>
+            <p>Phone: <%= user.phone %></p>
+        </div>
+        <div class="col-8">
+                <h3>Order History</h3>
+                <table class="table table-fluid">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <% results.forEach(function(itemorder){ 
+                            var date = new Date(itemorder.date);%>
+                            <tr>
+                                <td>Order Date: <%= date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds() %></td>
+                            </tr>
+                            <% itemorder.order.forEach(function(order){ %>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <img src="images/<%= order.img %>" style="width:100px; height:100px;" class="img-thumbnail"/>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <div class="caption"><a href="products/<%= order._id %>"><%= order.name %></a></div>
+                                        <div>
+                                            <small class="font-italic"><%= order.type %></small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="font-weight-bold">$ <%= order.price %></p>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        <% }); %>
+                    </table>
+                </div>
+        </div>
+    </div>
+</div>
+
+<%- include ('partials/footer') %>
